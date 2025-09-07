@@ -34,6 +34,7 @@ export default function StoryUploader() {
 
   useEffect(() => {
     console.log(callData, "ppppppppppp");
+    console.log(callData, "ppppppppppp");
     const fetchStories = async () => {
       try {
         const res = await get("/stories");
