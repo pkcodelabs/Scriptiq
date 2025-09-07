@@ -4,6 +4,9 @@ import AdminPage from "./pages/admin/adminpage";
 import ProductionPage from "./pages/production/production";
 import Login from "./pages/login/login";
 import Messagechat from "./pages/message/messagechat";
+import StoryPost from "./pages/storypost/storypost";
+import Account from "./pages/account/account";
+import ReadStory from "./pages/readstory/readstory";
 
 // wrapper for protected routes
 const PrivateRoute = ({ children }) => {
@@ -17,7 +20,6 @@ function App() {
       <div className="p-4">
         <Routes>
           <Route path="/login" element={<Login />} />
-
           {/* protected routes */}
           <Route
             path="/"
@@ -32,6 +34,30 @@ function App() {
             element={
               <PrivateRoute>
                 <AdminPage />
+              </PrivateRoute>
+            }
+          />{" "}
+          <Route
+            path="/storypost"
+            element={
+              <PrivateRoute>
+                <StoryPost />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/account"
+            element={
+              <PrivateRoute>
+                <Account />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/readscript"
+            element={
+              <PrivateRoute>
+                <ReadStory />
               </PrivateRoute>
             }
           />

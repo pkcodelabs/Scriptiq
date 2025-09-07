@@ -100,20 +100,7 @@ export default function useGeminiRating() {
             parts: [
               {
                 text: `Rate this story strictly based on the rules below. Output ONLY the numeric rating (1–10). 
-Rules:
-God respect - 1 star
-Parent/child love - 3 star
-Different concepts - 5 star
-Logic fights - 0.5 star
-Unpredictable twists - 2 star
-Comedy - 1 star
-Lovers love (even if side theme) - 1 star
-Emotions (other than parent/child) - 2 star
-Message - 1 star
-Hero sacrificing - 1 star
-Hero righteous - 0.5 star
-Swag - 1 star
-Smart villain (not dumb) - 1 star
+
 
 Story:
 ${script}`,

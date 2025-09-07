@@ -9,6 +9,8 @@ export default {
       },
       colors: {
         // Custom named colors
+        customPurple: "#7C3AED",
+
         myblue50: "#eff6ff", // like bg-blue-50
         myblue300: "#93c5fd", // like bg-blue-300
         mysky100: "#e0f2fe", // like bg-sky-100
