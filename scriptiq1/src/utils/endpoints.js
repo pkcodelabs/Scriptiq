@@ -3,7 +3,7 @@ const endpoints = {
 };
 //"http://localhost:3001"
 //"https://scriptiqserver.onrender.com"
-const baseUrl = "https://scriptiqserver.onrender.com";
+const baseUrl = "https://scriptiqserver-ugp0.onrender.com";
 
 const baseUrl1 = "http://localhost:3001";
 
