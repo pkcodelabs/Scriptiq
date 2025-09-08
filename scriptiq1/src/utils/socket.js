@@ -1,8 +1,8 @@
 // src/utils/socket.js
 import { io } from "socket.io-client";
-import { endpoints } from "../utils/endpoints"; // optional, fallback URL
+import { endpoints } from "./endpoints"; // optional, fallback URL
 
-const baseUrl = endpoints?.baseURL;
+import { baseUrl } from "./endpoints";
 
 const socket = io(baseUrl, {
   withCredentials: true,

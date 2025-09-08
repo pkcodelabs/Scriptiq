@@ -275,7 +275,8 @@ import axios from "axios";
 import { endpoints } from "../utils/endpoints"; // optional, fallback URL
 
 // --- Generic Axios instance inside thunk ---
-const baseUrl = endpoints?.baseURL;
+
+import { baseUrl } from "../utils/endpoints";
 
 let socket;
 
@@ -294,6 +295,8 @@ function RoomJoiner({ storyId, user }) {
           headers: { Authorization: `Bearer ${token}` },
         });
         setMessages(res.data);
+
+        console.log(res.data, "messaagessss");
       } catch (err) {
         console.error("❌ Fetch error:", err);
       }
@@ -368,7 +371,7 @@ function RoomJoiner({ storyId, user }) {
     <div className="flex flex-col h-full border rounded-lg bg-white">
       {/* Chat window */}
       <div className="flex-1 overflow-y-auto p-3 space-y-2">
-        {messages.map((msg, i) => (
+        {messages?.map((msg, i) => (
           <div
             key={i}
             className={`p-2 rounded-lg ${
