@@ -21,7 +21,7 @@ export const employeeFormFields = [
     customcolour: colors.customPurple,
     customvaluecolour: "gray",
     placeholder: "Enter your username",
-    //rules: [{ required: true, message: "Name is required" }],
+    rules: [{ required: true, message: "Name is required" }],
     colSpan: { xs: 24, sm: 12, lg: 12 },
     icon: (
       <UserOutlined style={{ fontSize: "20px", color: colors.customPurple }} />
@@ -35,7 +35,7 @@ export const employeeFormFields = [
     customcolour: colors.customPurple,
     customvaluecolour: "gray",
     placeholder: "Enter your email",
-    //rules: [{ required: true, message: "email is required" }],
+    rules: [{ required: true, message: "email is required" }],
     colSpan: { xs: 24, sm: 12, lg: 12 },
     icon: (
       <MailOutlined style={{ fontSize: "20px", color: colors.customPurple }} />
@@ -49,7 +49,7 @@ export const employeeFormFields = [
     customcolour: colors.customPurple,
     customvaluecolour: "gray",
     placeholder: "Enter your password",
-    //rules: [{ required: true, message: "password is required" }],
+    rules: [{ required: true, message: "password is required" }],
     colSpan: { xs: 24, sm: 12, lg: 12 },
     icon: (
       <LockOutlined style={{ fontSize: "20px", color: colors.customPurple }} />
@@ -63,7 +63,7 @@ export const employeeFormFields = [
     borderRadius: "0px",
     customvaluecolour: "gray",
     options: ["stared", "normal"],
-    //rules: [{ required: true, message: "Select Option" }],
+    rules: [{ required: true, message: "Select Option" }],
     colSpan: { xs: 24, sm: 12, lg: 12 },
     icon: (
       <StarOutlined style={{ fontSize: "20px", color: colors.customPurple }} />
@@ -77,7 +77,7 @@ export const employeeFormFields = [
     borderRadius: "0px",
     customvaluecolour: "gray",
     options: ["user", "admin", "employee"],
-    //rules: [{ required: true, message: "Select role" }],
+    rules: [{ required: true, message: "Select role" }],
     colSpan: { xs: 24, sm: 12, lg: 12 },
     icon: (
       <TeamOutlined style={{ fontSize: "20px", color: colors.customPurple }} />
@@ -118,7 +118,7 @@ export const employeeFormFields = [
       { label: "Turkey", value: "TR" },
       { label: "UAE", value: "AE" },
     ],
-    //rules: [{ required: true, message: "Please select your country" }],
+    rules: [{ required: true, message: "Please select your country" }],
     icon: (
       <GlobalOutlined
         style={{ fontSize: "20px", color: colors.customPurple }}
@@ -190,7 +190,7 @@ export const employeeFormFields = [
       { label: "Dubai", value: "DU-AE" },
       { label: "Abu Dhabi", value: "AD-AE" },
     ],
-    //rules: [{ required: true, message: "Please select your state" }],
+    rules: [{ required: true, message: "Please select your state" }],
     icon: (
       <EnvironmentOutlined
         style={{ fontSize: "20px", color: colors.customPurple }}
@@ -205,13 +205,13 @@ export const employeeFormFields = [
     customcolour: colors.customPurple,
     customvaluecolour: "gray",
     placeholder: "Enter your pincode",
-    // rules: [
-    //   { required: true, message: "Pincode is required" },
-    //   {
-    //     pattern: /^[0-9]{5,6}$/,
-    //     message: "Pincode must be 5 or 6 digits",
-    //   },
-    // ],
+    rules: [
+      { required: true, message: "Pincode is required" },
+      {
+        pattern: /^[0-9]{5,6}$/,
+        message: "Pincode must be 5 or 6 digits",
+      },
+    ],
     colSpan: { xs: 24, sm: 12, lg: 12 },
     icon: (
       <NumberOutlined
