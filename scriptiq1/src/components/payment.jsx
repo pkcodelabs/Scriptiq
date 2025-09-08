@@ -125,7 +125,7 @@ function Payment({ onSuccess }) {
       const order = await axios.post(
         "https://ranjirender.onrender.com/create",
         {
-          amount: 100000, // ₹1000
+          amount: 10000, // ₹1000
         }
       );
 
@@ -137,9 +137,24 @@ function Payment({ onSuccess }) {
         name: "MOKA RANJITH KUMAR",
         description: "Fixed ₹1000 Payment",
         order_id: order.data.id,
+        // handler: function (response) {
+        //   console.log("Payment Success:", response);
+        //   if (onSuccess)
+
+        //     onSuccess(); // ✅ call parent success handler
+        // },
         handler: function (response) {
           console.log("Payment Success:", response);
-          if (onSuccess) onSuccess(); // ✅ call parent success handler
+
+          if (onSuccess) {
+            const paymentState = {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            };
+
+            onSuccess(paymentState);
+          }
         },
         theme: { color: "#3399cc" },
       };
@@ -160,7 +175,7 @@ function Payment({ onSuccess }) {
       disabled={loading}
       className="bg-customPurple text-white px-4 py-2 rounded hover:bg-green-600"
     >
-      {loading ? "Processing..." : "Pay ₹1000"}
+      {loading ? "Processing..." : "Pay ₹100"}
     </button>
   );
 }

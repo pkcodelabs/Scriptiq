@@ -1,0 +1,22 @@
+/* receipt.css */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .ant-btn {
+    display: none;
+  }
+  .receipt-printable {
+    visibility: visible;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white !important;
+    color: black !important;
+  }
+  .receipt-printable * {
+    color: black !important;
+    background: white !important;
+  }
+}

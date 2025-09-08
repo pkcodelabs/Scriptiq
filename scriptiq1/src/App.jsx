@@ -8,6 +8,8 @@ import StoryPost from "./pages/storypost/storypost";
 import Account from "./pages/account/account";
 import ReadStory from "./pages/readstory/readstory";
 import Notifications from "./pages/notifications/notifications";
+import AdminPayments from "./pages/admin/adminpayments";
+import PaymentReceipt from "./pages/admin/paymentreciept";
 
 // wrapper for protected routes
 const PrivateRoute = ({ children }) => {
@@ -67,6 +69,22 @@ function App() {
             element={
               <PrivateRoute>
                 <Notifications />
+              </PrivateRoute>
+            }
+          />{" "}
+          <Route
+            path="/payment-receipt"
+            element={
+              <PrivateRoute>
+                <PaymentReceipt />
+              </PrivateRoute>
+            }
+          />{" "}
+          <Route
+            path="/admin-payments"
+            element={
+              <PrivateRoute>
+                <AdminPayments />
               </PrivateRoute>
             }
           />

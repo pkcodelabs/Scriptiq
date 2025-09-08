@@ -27,7 +27,7 @@ export default function StoryPost() {
   const callData = useSelector(selectCallData);
   const { getRating, isLoading } = useGeminiRating();
 
-  const handleStorySave = async () => {
+  const handleStorySave = async (paymentState) => {
     try {
       const values = form.getFieldsValue(); // ✅ get all form values
       console.log("Form Values:", values);
@@ -54,7 +54,16 @@ export default function StoryPost() {
             "Content-Type": "multipart/form-data",
           },
         }
-      ).then(() => console.log("66666666666666666", scriptwithprompt, rating));
+      );
+      const story = res.data;
+      console.log(story, "storyrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+
+      const paymentRes = await post(`/payment/${story._id}`, {
+        razorpay_order_id: paymentState.razorpay_order_id,
+        razorpay_payment_id: paymentState.razorpay_payment_id,
+        razorpay_signature: paymentState.razorpay_signature,
+        storyId: story._id,
+      });
 
       setStories((prev) => [...prev, res.data]);
       form.resetFields();
