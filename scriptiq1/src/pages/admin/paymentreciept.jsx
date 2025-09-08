@@ -55,10 +55,9 @@ class PrintableReceipt extends React.Component {
           style={{
             display: "flex",
             justifyContent: "space-between",
-            marginBottom: "20px",
           }}
         >
-          <img src={logoUrl} alt="Logo" style={{ height: "60px" }} />
+          <img src={logoUrl} alt="Logo" style={{ height: "100px" }} />
           <div style={{ textAlign: "right" }}>
             <Text>{email}</Text>
             <br />
@@ -67,40 +66,50 @@ class PrintableReceipt extends React.Component {
         </div>
 
         <div className="py-8 border-t-2">
-          <div className=" text-center font-bold text-2xl" level={3}>
+          <div
+            className=" text-center font-bold mb-8 md:mb-6 text-2xl"
+            level={3}
+          >
             Receipt
           </div>
           <div
-            className="      gap-32"
+            className="   gap-2 md:gap-8  "
             style={{
               display: "grid",
+
               gridTemplateColumns: "auto auto 1fr", // First two columns fixed size, last column takes remaining space
               textAlign: "left",
               columnGap: "16px",
               rowGap: "16px",
-              gap: "48px 24px", // space between columns
+              gap: " ", // space between columns
               alignItems: "start",
             }}
           >
             <div style={{ gridColumn: "1 / 2", flexGrow: 0 }}>
               <Paragraph>
-                <Text style={{ display: "block", marginBottom: "8px" }}>
+                <div
+                  style={{
+                    display: "block",
+
+                    marginBottom: "8px",
+                  }}
+                >
                   {" "}
                   Issued by
-                </Text>
-                <Text style={{ display: "block", marginBottom: "8px" }}>
+                </div>
+                <div style={{ display: "block", marginBottom: "8px" }}>
                   {" "}
                   Date
-                </Text>
-                <Text style={{ display: "block" }}>Receipt ID</Text>
+                </div>
+                <div style={{ display: "block" }}>Receipt ID</div>
               </Paragraph>
             </div>
 
             <div style={{ gridColumn: "2 / 3", flexGrow: 0 }}>
               <Paragraph>
-                <Text style={{ display: "block", marginBottom: "8px" }}>:</Text>
-                <Text style={{ display: "block", marginBottom: "8px" }}>:</Text>
-                <Text style={{ display: "block" }}>:</Text>
+                <div style={{ display: "block", marginBottom: "8px" }}>:</div>
+                <div style={{ display: "block", marginBottom: "8px" }}>:</div>
+                <div style={{ display: "block" }}>:</div>
               </Paragraph>
 
               {/* You can add additional content here if needed */}
@@ -108,30 +117,51 @@ class PrintableReceipt extends React.Component {
 
             <div style={{ gridColumn: "3 / 4" }}>
               <Paragraph>
-                <Text style={{ display: "block", marginBottom: "8px" }} strong>
+                <div style={{ display: "block", marginBottom: "8px" }} strong>
                   {" "}
                   {companyName}{" "}
-                </Text>
+                </div>
 
-                <Text style={{ display: "block", marginBottom: "8px" }}>
+                <div
+                  className=" div-sm  "
+                  style={{ display: "block", marginBottom: "8px" }}
+                >
                   {new Date(date).toLocaleString()}
-                </Text>
+                </div>
 
-                <Text style={{ display: "block" }}>{receiptId}</Text>
+                <div style={{ display: "block" }}>{receiptId}</div>
               </Paragraph>
               {/* Additional empty or flexible column */}
             </div>
           </div>
 
-          <Table
-            columns={columns}
-            dataSource={tableData}
-            pagination={false}
-            bordered
-            style={{ marginTop: "20px", marginBottom: "20px" }}
-          />
+          <div className="block md:hidden space-y-4">
+            {tableData.map((item, index) => (
+              <div key={index} className=" py-2   rounded bg-white">
+                {columns.map((col) => (
+                  <div key={col.key} className="flex justify-between mb-2">
+                    <span>{col.title}</span>
+                    <span className="font-semibold ">
+                      {item[col.dataIndex]}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
 
-          <div style={{ textAlign: "left" }}>
+          {/* Show table only on md+ */}
+          <div className="hidden md:block">
+            <Table
+              columns={columns}
+              dataSource={tableData}
+              pagination={false}
+              bordered
+              style={{ marginTop: "20px", marginBottom: "20px" }}
+            />
+          </div>
+
+          <div style={{ textAlign: "left", marginTop: "100px" }}>
             <Paragraph>
               Authorised By :{" "}
               <Text strong>
@@ -179,40 +209,51 @@ class PrintableReceipt extends React.Component {
 }
 
 // Main Functional Component
-const PaymentReceipt = () => {
-  const contentRef = useRef();
 
+import { Navigate, useLocation } from "react-router-dom";
+import Header from "../../components/header";
+
+const PaymentReceipt = () => {
+  const location = useLocation();
+  const receiptData = location.state;
+  const contentRef = useRef();
+  if (!receiptData) {
+    return <Navigate to="/admin-payments" replace />;
+  }
   // Example static data – replace with dynamic receiptData
-  const receiptData = {
-    logoUrl: "images/scriptiqlogo2.png",
-    email: "scriptiq.support@company.com",
-    phone: "+91-9876543210",
-    companyName: "SCRIPT IQ",
-    receiptId: "RCPT-20230907-001",
-    date: new Date(),
-    from: "Ranjith Moka",
-    amount: "1000",
-    paymentMethod: "Razorpay",
-    purpose: "Story Submission Fee",
-    authorisedBy: "Pavan Kumar",
-  };
+  // const receiptData = {
+  //   logoUrl: "images/scriptiqlogo2.png",
+  //   email: "scriptiq.support@company.com",
+  //   phone: "+91-9876543210",
+  //   companyName: "SCRIPT IQ",
+  //   receiptId: "RCPT-20230907-001",
+  //   date: new Date(),
+  //   from: "Ranjith Moka",
+  //   amount: "1000",
+  //   paymentMethod: "Razorpay",
+  //   purpose: "Story Submission Fee",
+  //   authorisedBy: "Pavan Kumar",
+  // };
 
   const handlePrint = useReactToPrint({
     content: () => contentRef.current,
   });
 
   return (
-    <div style={{ padding: "20px" }}>
-      <Button
-        type="primary"
-        onClick={handlePrint}
-        style={{ marginBottom: "20px" }}
-      >
-        Print Receipt
-      </Button>
+    <>
+      <Header />
+      <div className="mt-12" style={{ padding: "20px" }}>
+        <Button
+          type="primary"
+          onClick={handlePrint}
+          style={{ marginBottom: "20px" }}
+        >
+          Print Receipt
+        </Button>
 
-      <PrintableReceipt ref={contentRef} data={receiptData} />
-    </div>
+        <PrintableReceipt ref={contentRef} data={receiptData} />
+      </div>
+    </>
   );
 };
 

@@ -121,7 +121,8 @@ export default function StoryUploader() {
           {stories.map(
             (s, i) =>
               (s?.author?._id === callData?.user?._id ||
-                callData?.user?.role === "employee") && (
+                callData?.user?.role === "employee" ||
+                callData?.user?.role === "admin") && (
                 <div
                   key={i}
                   className="p-4 text-left border rounded-lg bg-white shadow"
@@ -144,7 +145,8 @@ export default function StoryUploader() {
                     </p>{" "}
                     <p>
                       {(s?.author?._id === callData?.user?._id ||
-                        callData?.user?.role === "employee") && (
+                        callData?.user?.role === "employee" ||
+                        callData?.user?.role === "admin") && (
                         <div
                           onClick={() => navigate("/message", { state: s })}
                           className="text-blue-500 cursor-pointer "

@@ -332,14 +332,14 @@ function RoomJoiner({ storyId, user }) {
     const tempMsg = {
       storyId,
       content: input,
-      sender: { _id: user.id, username: user.username },
+      sender: { _id: user.id, username: user.name },
       createdAt: new Date().toISOString(), // temp timestamp
       temp: true, // mark as temporary if needed
     };
 
     // 1️⃣ Emit immediately to Socket.IO
     socket.emit("message", tempMsg);
-
+    console.log("999999999999999");
     // 2️⃣ Optimistic UI update
     // setMessages((prev) => [...prev, tempMsg]);
     setInput("");

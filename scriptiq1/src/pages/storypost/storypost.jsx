@@ -58,14 +58,20 @@ export default function StoryPost() {
       const story = res.data;
       console.log(story, "storyrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
 
-      const paymentRes = await post(`/payment/${story._id}`, {
-        razorpay_order_id: paymentState.razorpay_order_id,
-        razorpay_payment_id: paymentState.razorpay_payment_id,
-        razorpay_signature: paymentState.razorpay_signature,
+      // const paymentRes = await post(`/payment/${story._id}`, {
+      //   razorpay_order_id: paymentState.razorpay_order_id,
+      //   razorpay_payment_id: paymentState.razorpay_payment_id,
+      //   razorpay_signature: paymentState.razorpay_signature,
+      //   storyId: story._id,
+      // });
+      const paymentRes = await post("/paid", {
         storyId: story._id,
+        storyImg: story.img,
+        receiptId: paymentState.razorpay_order_id,
+        title: story.title,
+        from: story.author.username,
+        rating: story.rating,
       });
-
-      setStories((prev) => [...prev, res.data]);
       form.resetFields();
     } catch (err) {
       console.error("Error uploading story:", err);
