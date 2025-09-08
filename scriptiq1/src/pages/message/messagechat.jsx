@@ -100,7 +100,7 @@ function Messagechat() {
   return (
     <div className="flex flex-col h-screen bg-white">
       {/* Header like Instagram */}
-      /
+
       <RoomJoiner storyId={story?._id} user={user} />
     </div>
   );

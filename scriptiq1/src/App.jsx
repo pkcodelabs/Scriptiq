@@ -7,6 +7,7 @@ import Messagechat from "./pages/message/messagechat";
 import StoryPost from "./pages/storypost/storypost";
 import Account from "./pages/account/account";
 import ReadStory from "./pages/readstory/readstory";
+import Notifications from "./pages/notifications/notifications";
 
 // wrapper for protected routes
 const PrivateRoute = ({ children }) => {
@@ -58,6 +59,14 @@ function App() {
             element={
               <PrivateRoute>
                 <ReadStory />
+              </PrivateRoute>
+            }
+          />{" "}
+          <Route
+            path="/notifications"
+            element={
+              <PrivateRoute>
+                <Notifications />
               </PrivateRoute>
             }
           />

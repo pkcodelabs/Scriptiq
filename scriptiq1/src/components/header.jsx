@@ -17,7 +17,7 @@ import { Badge } from "antd";
 const Header = () => {
   const user = useSelector(selectCallData);
   console.log(user);
-  const unreadNotifications = 5;
+  const unreadNotifications = 3;
   return (
     <header className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
@@ -30,16 +30,12 @@ const Header = () => {
           />
         </Link>
 
-        {/* Navigation */}
-
-        {/* User Menu */}
         <div className="flex items-center space-x-4">
           <nav className=" flex space-x-6 items-center">
             <Link
-              to="/messages"
+              to="/notifications"
               className="flex items-center text-gray-700 hover:text-purple-600 font-medium"
             >
-              {/* <MessageOutlined className="mr-1" /> Chat */}
               <Badge count={unreadNotifications} overflowCount={99}>
                 <BellOutlined className="mr-1 text-lg text-customPurple" />
               </Badge>
