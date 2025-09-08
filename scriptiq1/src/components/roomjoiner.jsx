@@ -374,11 +374,11 @@ function RoomJoiner({ storyId, user }) {
         {messages?.map((msg, i) => (
           <div
             key={i}
-            className={`p-2 rounded-lg ${
+            className={`p-2 text-left rounded-lg ${
               msg.sender?._id === user.id
                 ? "bg-blue-500 text-white self-end ml-auto"
                 : "bg-gray-200 text-black self-start mr-auto"
-            } max-w-xs`}
+            } max-w-[80%]`}
           >
             <div className="text-sm font-semibold">
               {msg.sender?.username || msg.user?.name || "Unknown"}
