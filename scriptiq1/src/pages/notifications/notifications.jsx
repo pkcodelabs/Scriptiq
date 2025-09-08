@@ -61,19 +61,32 @@ const Notifications = () => {
         renderItem={(item) => (
           <List.Item className="hover:bg-gray-100 rounded-lg p-2">
             <List.Item.Meta
-              avatar={<Avatar src={item.profilePic || "/default-avatar.png"} />}
+              avatar={
+                <Avatar
+                  className="mt-4"
+                  src={item.profilePic || "/default-avatar.png"}
+                />
+              }
               title={
-                <Text strong style={{ color: colors.customPurple }}>
-                  {item.name}{" "}
+                <div style={{ textAlign: "left" }}>
+                  <Text strong style={{ color: colors.customPurple }}>
+                    {item.name}
+                  </Text>
+                  <br />
                   <Text
                     type="secondary"
-                    style={{ fontSize: "12px", color: colors.customPurple }}
+                    style={{
+                      fontSize: "12px",
+                      color: colors.customPurple,
+                    }}
                   >
                     {new Date(item.time).toLocaleString()}
                   </Text>
-                </Text>
+                </div>
               }
-              description={item.message}
+              description={
+                <div style={{ textAlign: "left" }}>{item.message}</div>
+              }
             />
           </List.Item>
         )}
