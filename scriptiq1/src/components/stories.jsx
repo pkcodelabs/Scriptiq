@@ -93,10 +93,10 @@ export default function StoryUploader() {
         ]}
       />
 
-      <div className="flex gap-4 mt-4">
+      <div className="flex justify-around gap-4 mt-4">
         <div
-          style={{ flexGrow: 2, backgroundColor: colors.customPurple }}
-          className="py-2 px-4 rounded-2xl text-white hover:bg-purple-700 cursor-pointer"
+          style={{ flexGrow: 0, backgroundColor: colors.customPurple }}
+          className="py-2 px-4 rounded-2xl max-w-xs text-white hover:bg-purple-700 cursor-pointer"
           onClick={handleFilter}
         >
           Filter Stories
@@ -113,7 +113,7 @@ export default function StoryUploader() {
 
       {/* Stories List */}
       <div className="mt-16">
-        <h3 className="text-xl font-semibold text-customPurple mb-3">
+        <h3 className="text-2xl font-semibold text-customPurple mb-3">
           {" "}
           Your Stories
         </h3>

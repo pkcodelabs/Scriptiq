@@ -49,13 +49,16 @@
 
 import { useNavigate } from "react-router-dom";
 import { get } from "../../utils/api";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../utils/endpoints";
 import { Avatar, List, Typography } from "antd";
 import { colors } from "../../utils/colors";
 import Header from "../../components/header";
+import { selectCallData } from "../../redux/slices/userdataslice";
 const { Text } = Typography;
 const AdminPayments = () => {
+  const callData = useSelector(selectCallData);
   const navigate = useNavigate();
   const [payments, setPayments] = useState([]);
 
@@ -64,7 +67,18 @@ const AdminPayments = () => {
     const fetchAllPayments = async () => {
       try {
         const res = await get("/paid");
-        setPayments(res.data); // Save all payments in state
+
+        let payments = res.data;
+
+        // Check user role and filter if needed
+        if (callData.user.role === "user") {
+          payments = payments.filter(
+            (payment) => payment.authorisedBy === callData.user.name
+          );
+
+          console.log(payments, callData.user.username);
+        }
+        setPayments(payments); // Save filtered payments in state
       } catch (err) {
         console.error("Error fetching payments:", err);
       }
@@ -82,12 +96,19 @@ const AdminPayments = () => {
       <Header />
       <div className="px-0 mt-16 ml-4 md:px-[10%]">
         <div className=" text-xl mb-4 font-semibold text-customPurple">
-          Paid Writers List
+          Payments List
         </div>
+
         <List
           itemLayout="horizontal"
           dataSource={payments}
-          locale={{ emptyText: "Loading Paid Writers List." }}
+          locale={{
+            emptyText:
+              callData.user.role === "admin" ||
+              callData.user.role === "employee"
+                ? "Loading Paid Writers List."
+                : "No payments available.",
+          }}
           renderItem={(payment) => (
             <List.Item
               className="hover:bg-gray-100 rounded-lg p-2"
@@ -134,14 +155,17 @@ const AdminPayments = () => {
                       <strong className="text-customPurple uppercase"></strong>
                       {payment.title}
                     </Text>{" "}
-                    <Text strong style={{ color: colors.customPurple }}>
-                      {" "}
+                    <Text
+                      type="secondary"
+                      style={{
+                        fontSize: "12px",
+                        color: colors.customPurple,
+                      }}
+                    >
                       <p style={{ margin: "4px 0", fontSize: "14px" }}>
-                        <strong className="text-customPurple"></strong>{" "}
                         {payment.from}
                       </p>
                     </Text>
-                    <br />
                   </div>
                 }
                 description={

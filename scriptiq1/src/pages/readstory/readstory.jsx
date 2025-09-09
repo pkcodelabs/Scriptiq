@@ -14,9 +14,12 @@ export default function ReadStory() {
       <div className="p-6 max-w-2xl mx-auto text-center">
         <Header />
         <h2 className="text-xl font-semibold mt-6">No story to display</h2>
-        <Button className="mt-4" onClick={() => navigate("/")}>
+        <div
+          className="mt-4 p-2 rounded-xl text-white bg-customPurple"
+          onClick={() => navigate("/")}
+        >
           Go Back
-        </Button>
+        </div>
       </div>
     );
   }
