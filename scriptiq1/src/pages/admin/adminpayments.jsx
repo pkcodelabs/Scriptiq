@@ -80,7 +80,7 @@ const AdminPayments = () => {
   return (
     <>
       <Header />
-      <div className="px-0 mt-16 ml-4 md:px-[20%]">
+      <div className="px-0 mt-16 ml-4 md:px-[10%]">
         <div className=" text-xl mb-4 font-semibold text-customPurple">
           Paid Writers List
         </div>
@@ -117,7 +117,7 @@ const AdminPayments = () => {
                       style={{
                         width: "100%",
                         height: "100%",
-                        objectFit: "contain",
+                        objectFit: "fit",
                       }}
                     />
                   </div>

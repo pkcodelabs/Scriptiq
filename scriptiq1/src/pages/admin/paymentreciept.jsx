@@ -217,9 +217,7 @@ const PaymentReceipt = () => {
   const location = useLocation();
   const receiptData = location.state;
   const contentRef = useRef();
-  if (!receiptData) {
-    return <Navigate to="/admin-payments" replace />;
-  }
+
   // Example static data – replace with dynamic receiptData
   // const receiptData = {
   //   logoUrl: "images/scriptiqlogo2.png",
@@ -238,7 +236,9 @@ const PaymentReceipt = () => {
   const handlePrint = useReactToPrint({
     content: () => contentRef.current,
   });
-
+  if (!receiptData) {
+    return <Navigate to="/admin-payments" replace />;
+  }
   return (
     <>
       <Header />

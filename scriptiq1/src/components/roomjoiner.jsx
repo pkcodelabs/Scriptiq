@@ -377,7 +377,7 @@ function RoomJoiner({ storyId, user }) {
             className={`p-2 text-left rounded-lg ${
               msg.sender?._id === user.id
                 ? "bg-blue-500 text-white self-end ml-auto"
-                : "bg-gray-200 text-black self-start mr-auto"
+                : "bg-gray-900 opacity-80 text-white self-start mr-auto"
             } max-w-[80%]`}
           >
             <div className="text-sm font-semibold">

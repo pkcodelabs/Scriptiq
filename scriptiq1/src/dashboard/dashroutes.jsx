@@ -12,12 +12,13 @@ import {
 export const adminOnlyPaths = ["/production", "/admin"];
 export const employeeOnlyPaths = ["/readscript"];
 
+export const userOnlyPaths = [];
 // routes allowed for all users
 export const allAllowedOnlyPaths = [
   "/",
   "/account",
   "/notifications",
-  "/payment-receipt",
+  //"/payment-receipt",
   "/admin-payments",
 ];
 
@@ -53,13 +54,15 @@ const routesAll = [
 export default routesAll;
 
 // Function to get allowed routes based on role
-export const getRoutesByRole = (role) => {
+export const getRoutesByRole = (role, bussinessModal = 1) => {
   let roleAllowedPaths = [];
 
   if (role === "admin") {
     roleAllowedPaths = adminOnlyPaths;
   } else if (role === "employee") {
     roleAllowedPaths = employeeOnlyPaths;
+  } else if (role === "user") {
+    roleAllowedPaths = userOnlyPaths;
   }
 
   // Combine general allowed routes + role-specific routes

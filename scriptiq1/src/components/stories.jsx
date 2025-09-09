@@ -127,29 +127,63 @@ export default function StoryUploader() {
                   key={i}
                   className="p-4 text-left border rounded-lg bg-white shadow"
                 >
-                  {s.img && (
-                    <img
-                      src={`${baseUrl}${s.img}`}
-                      alt={s.title}
-                      className="w-full h-48 object-contain rounded"
-                    />
-                  )}
-                  <h4 className="text-lg font-bold text-customPurple  mt-2">
+                  <div className=" flex">
+                    {" "}
+                    {s.img && (
+                      <>
+                        {" "}
+                        <div>
+                          {" "}
+                          <h4 className="text-lg hidden grow-0 lg:flex font-bold text-customPurple  mt-2">
+                            {s.title}
+                          </h4>
+                          <p className=" text-customPurple my-2 lg:flex hidden">
+                            Rating:
+                            <span className="text-yellow-500">
+                              {s.rating}/20
+                            </span>{" "}
+                            ⭐
+                          </p>
+                          <p>
+                            {(s?.author?._id === callData?.user?._id ||
+                              callData?.user?.role === "employee" ||
+                              callData?.user?.role === "admin") && (
+                              <div
+                                onClick={() =>
+                                  navigate("/message", { state: s })
+                                }
+                                className="text-blue-500 lg:flex hidden cursor-pointer "
+                              >
+                                <MessageOutlined style={{ fontSize: "18px" }} />
+                              </div>
+                            )}
+                          </p>
+                        </div>{" "}
+                        <img
+                          src={`${baseUrl}${s.img}`}
+                          alt={s.title}
+                          className="w-full max-h-48 object-contain rounded"
+                        />
+                      </>
+                    )}
+                  </div>
+                  <h4 className="text-lg lg:hidden font-bold text-customPurple  mt-2">
                     {s.title}
                   </h4>
                   <div className="flex justify-between">
                     {" "}
-                    <p className=" text-customPurple">
+                    <p className=" text-customPurple lg:hidden">
                       Rating:
                       <span className="text-yellow-500">{s.rating}/20</span> ⭐
-                    </p>{" "}
+                    </p>
                     <p>
                       {(s?.author?._id === callData?.user?._id ||
                         callData?.user?.role === "employee" ||
                         callData?.user?.role === "admin") && (
                         <div
                           onClick={() => navigate("/message", { state: s })}
-                          className="text-blue-500 cursor-pointer "
+                          className="text-blue-500 lg:hidden cursor-pointer "
+                          title="discuss your story"
                         >
                           <MessageOutlined style={{ fontSize: "18px" }} />
                         </div>

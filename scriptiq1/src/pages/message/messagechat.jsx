@@ -11,6 +11,7 @@ import {
   selectCallLoading,
 } from "../../redux/slices/userdataslice";
 import { useLocation } from "react-router-dom";
+import Header from "../../components/header";
 
 // --- Generic Axios instance inside thunk ---
 
@@ -100,7 +101,7 @@ function Messagechat() {
   return (
     <div className="flex flex-col h-screen bg-white">
       {/* Header like Instagram */}
-
+      <Header />
       <RoomJoiner storyId={story?._id} user={user} />
     </div>
   );

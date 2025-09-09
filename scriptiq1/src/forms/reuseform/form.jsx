@@ -323,7 +323,7 @@ export const storyPostFeilds = [
     customvaluecolour: "gray",
     accept: ".png,.jpg,.jpeg",
     maxSize: 50, // MB
-    minSize: 0.1, // MB
+    minSize: 0.01, // MB
     colSpan: { xs: 24, sm: 12, lg: 10 },
     icon: (
       <PictureOutlined

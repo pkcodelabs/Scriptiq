@@ -83,7 +83,9 @@ const Auth = () => {
           <button
             onClick={() => setMode("login")}
             className={`px-4 py-2 rounded-l-lg ${
-              mode === "login" ? "bg-blue-600 text-white" : "bg-gray-200"
+              mode === "login"
+                ? "bg-blue-600 text-white"
+                : "bg-gray-900 opacity-80 text-white"
             }`}
           >
             Login
@@ -91,7 +93,9 @@ const Auth = () => {
           <button
             onClick={() => setMode("signup")}
             className={`px-4 py-2 rounded-r-lg ${
-              mode === "signup" ? "bg-blue-600 text-white" : "bg-gray-200"
+              mode === "signup"
+                ? "bg-blue-600 text-white"
+                : "bg-gray-900 opacity-80 text-white"
             }`}
           >
             Signup

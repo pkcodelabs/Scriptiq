@@ -34,6 +34,7 @@ const Header = () => {
           <nav className=" flex space-x-6 items-center">
             <Link
               to="/notifications"
+              title="notifications"
               className="flex items-center text-gray-700 hover:text-purple-600 font-medium"
             >
               <Badge count={unreadNotifications} overflowCount={99}>
@@ -44,7 +45,7 @@ const Header = () => {
           <div>
             {user?.user ? (
               <div className="flex items-center space-x-4 cursor-pointer">
-                <Link to="/account">
+                <Link to="/account" title="account">
                   <UserOutlined className="text-purple-600 pl-2 text-lg" />
                   <span className="text-purple-600 pl-2 font-medium">
                     {user?.user?.username}
